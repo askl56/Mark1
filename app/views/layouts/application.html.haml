@@ -12,7 +12,4 @@
       = render 'layouts/navigation'
     %main{:role => "main"}
       = render 'layouts/messages'
-      %ul
-      %li= link_to "Home", welcome_index_path
-      %li= link_to "About", welcome_about_path
       = yield
