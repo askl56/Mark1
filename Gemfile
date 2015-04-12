@@ -11,7 +11,7 @@ gem 'figaro', '1.0'
 gem 'pry-rails'
 gem 'pry-nav'
 gem 'pry-stack_explorer'
-gem 'faker'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug'

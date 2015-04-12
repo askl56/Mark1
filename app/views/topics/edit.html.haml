@@ -1,2 +1,7 @@
-%h1 Topics#edit
-%p Find me in app/views/topics/edit.html.haml
+%h1 Edit Topic
+= form_for @topic do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.submit "Save", class: 'btn btn-success'

@@ -1,5 +1,13 @@
-%h3 User
-%p
-  Name: #{@user.name if @user.name}
-%p
-  Email: #{@user.email if @user.email}
+.container
+  .row.no-margin
+    %h1= "#{current_user.name}"
+    .col-md-6.no-padding
+      %h3 My Topics
+      - current_user.topics.each do |topic|
+        = link_to "#{topic.title}", topic
+        %br/
+        - topic.bookmarks.each do |bookmark|
+          = link to "#{bookmark.url}", bookmark.url
+          %br/
+    .col-md-6.no-padding
+      %h3 Topics and Bookmarks I Like

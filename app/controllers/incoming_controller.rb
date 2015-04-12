@@ -17,6 +17,7 @@ class IncomingController < ApplicationController
     # Now that you're sure you have a valid user and topic, build and save a new bookmark
     @bookmark = Bookmark.create(url: @url, topic_id: @topic_id)
     # Assuming all went well.s
+    authorize @bookmark
     head 200
   end
 end

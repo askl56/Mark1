@@ -1,2 +1,9 @@
-%h1 Topics#show
-%p Find me in app/views/topics/show.html.haml
+= link_to "New Topic", new_topic_path, class: 'btn btn-warning'
+- if @topic
+  %h4
+    Topic: #{@topic.title}
+  = link_to edit_topic_path(@topic), class: 'btn btn-success' do
+    %span.glyphicon.glyphicon-pencil
+  = link_to @topic, data: { confirm: 'Are you sure you want to delete this topic?' }, method: :delete, class: 'btn btn-danger' do
+    %span.glyphicon.glyphicon-trash
+  = render partial: 'bookmarks/bookmark', locals: { topic_id: @topic.id }
