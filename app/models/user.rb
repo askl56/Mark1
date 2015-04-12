@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  def liked(bookmark)
+    likes.where(bookmark_id: bookmark.id, user_id: id).first
+  end
+
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 end

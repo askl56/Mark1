@@ -1,0 +1,6 @@
+%div{:class => "form-group>"}
+  = form_for [@topic, @topic.bookmarks.new] do |f|
+    = f.label "New Bookmark:"
+    = f.text_field :url, class: 'form-control field-small', placeholder: "Enter website"
+    .action
+      = f.submit "Save", class: 'btn btn-success btn-top'

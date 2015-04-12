@@ -29,9 +29,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    #populate @user_bookmarks with the user's bookmarks
-    #populate @like_bookmarks with liked bookmarks
-
+    @user = User.find(params[:id])
+    @user_bookmarks = @user.bookmarks
+    @like_bookmarks = Like.where(user_id: current_user.id)
   end
 
   def show

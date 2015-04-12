@@ -1,10 +1,11 @@
 - if policy(Like.new).create?
   %div
-    - if like = current_user.liked(bookmark)
-      = link_to [bookmark, like], class: 'btn btn-danger', method: :delete do
-        %i.glyphicon.glyphicon-star-empty>
-        \  Unlike
+    - if @like
+      - if @like = current_user.liked(bookmark)
+        = link_to [bookmark, like], class: 'btn btn-danger', method: :delete do
+          %i.glyphicon.glyphicon-star-empty>
+          \  Unlike
     - else
-      = link_to [bookmark, like.new], class: 'btn btn-primary', method: :post do
-        %i.glyphicon.glyphicon-star>
+      = link_to [@bookmark, Like.new], class: 'btn btn-primary', method: :post do
+        %i.glyphicon.glyphicon-thumbs-up>
         \  Like

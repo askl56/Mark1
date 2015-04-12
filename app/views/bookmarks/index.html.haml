@@ -1,0 +1,12 @@
+.container
+  .row
+    - current_user.bookmarks.each do |bookmark|
+      = link_to "#{bookmark.url}", @bookmark.url
+      = render partial: 'likes/like', collection: @bookmarks, locals: { user_id: current_user.id}
+      %br/
+    - unless @topic
+      = link_to "View Topics", topics_path, class: 'btn btn-info'
+    - else
+      = @topic.bookmarks.each do |bookmark|
+        = link_to "#{bookmark.url}", @bookmark.url
+        = render partial: 'likes/like', collection: @bookmarks, locals: { topic_id: topic.id }

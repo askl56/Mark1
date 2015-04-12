@@ -1,2 +1,9 @@
-%h1 Bookmarks#edit
-%p Find me in app/views/bookmarks/edit.html.haml
+.container
+  .row
+    %h5 Edit Bookmark
+    = form_for @bookmark do |f|
+      .form-group
+        = f.label :url
+        = f.text_field :url, class: 'form-control field-small'
+      .form-group
+        = f.submit "Save", class: 'btn btn-success'

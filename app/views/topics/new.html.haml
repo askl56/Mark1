@@ -1,8 +1,10 @@
-%h5 New Topic
-= form_for @topic do |f|
-  .form-group
-    = f.label :title
-    %br/
-    = f.text_field :title, class: 'form-control', placeholder: "Enter topic name"
-  .form-group
-    = f.submit "Save", class: 'btn btn-success btn-sm'
+.container
+  .row
+    %h1 New Topic
+    = form_for @topic do |f|
+      .form-group
+        = f.label :title
+        %br/
+        = f.text_field :title, class: 'form-control', placeholder: "Enter topic"
+      .form-group
+        = f.submit "Save", class: 'btn btn-success btn-sm'

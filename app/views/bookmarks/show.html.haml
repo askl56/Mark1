@@ -1,2 +1,4 @@
-%h1 Bookmarks#show
-%p Find me in app/views/bookmarks/show.html.haml
+.container
+  %h1 Bookmarks
+  = render partial: 'likes/like', locals: { bookmark: @bookmark, user_id: current_user.id }
+  = link_to "#{@bookmark.url}", @bookmark.url
