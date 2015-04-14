@@ -1,0 +1,15 @@
+.container
+  .row
+    %h1 Frequently Asked Questions
+    %ol
+      %h3
+      %li I cannot login
+      %p
+        I did not receive a confirmation email.
+        \#{link_to "Resend Email", new_user_confirmation_path}
+      %p
+        I forgot my password
+        \#{link_to "Reset Password", new_user_password_path}
+      %h3
+      %li I want to change my user information
+      %p= link_to "User Profile", edit_user_registration_path

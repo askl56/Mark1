@@ -1,14 +1,9 @@
 .container
   .row
     %h1 Topics
-    = form_tag topics_path, method: :get do
-      %p
-        = text_field_tag :search, params[:search]
-        = submit_tag "Search", :name => nil
     - @topics.each do |topic|
       = link_to "#{topic.title}", topic
       %br/
-    = will_paginate @topics
     = succeed "\\>" do
       %br/
     - if current_user

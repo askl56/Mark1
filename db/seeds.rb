@@ -5,8 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+require 'faker'
 
 member = User.new(
   name:     'Member User',
@@ -16,3 +15,39 @@ member = User.new(
 )
 member.skip_confirmation!
 member.save!
+
+5.times do
+  user = User.new(
+    name:     Faker::Name.name,
+    email:    Faker::Internet.email,
+    password:  Faker::Lorem.characters(10),
+    )
+  user.skip_confirmation!
+  user.save!
+end
+users = User.all
+
+15.times do 
+  Topic.create!(
+    title:      Faker::Lorem.sentence,
+    user:       users.sample
+    )
+end
+topics = Topic.all
+
+50.times do 
+  bookmark = Bookmark.create!(
+    user:     users.sample,
+    topic:    topics.sample,
+    url:      Faker::Internet.url
+    )
+end
+bookmarks = Bookmark.all
+
+50.times do
+  like = Like.create!(
+    user:     users.sample,
+    bookmark:   bookmarks.sample
+    )
+end
+likes = Like.all

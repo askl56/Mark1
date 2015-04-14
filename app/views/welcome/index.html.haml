@@ -16,22 +16,27 @@
       .row.no-margin.no-padding
         =image_tag  "http://i.imgur.com/0QHoXMH.png", :class => "my_class"
         %p Are you looking for a new way to organize your bookmarks and share them with friends?
-    .row.no-margin
-      .col-md-4.pull-left
-        %br/
-        .panel.panel-primary
-          .panel-heading
-          .panel-body
-            %h3= link_to "Topics", topics_path
-      .col-md-4
-        %br/
-        .panel.panel-primary
-          .panel-heading
-          .panel-body
-            %h3 ?
-      .col-md-4
-        %br/
-        .panel.panel-primary
-          .panel-heading
-          .panel-body
-            %h3 ?
+.row.no-margin
+  .col-md-4.pull-left
+    %br/
+    .panel.panel-primary
+      .panel-heading
+      .panel-body
+        %h3= link_to "Topics", topics_path
+  .col-md-4
+    %br/
+    .panel.panel-primary
+      .panel-heading
+      .panel-body
+        %h3= link_to "My Bookmarks", bookmarks_path(current_user)
+  .col-md-4
+    %br/
+    .panel.panel-primary
+      .panel-heading
+      .panel-body
+        - if @like_bookmarks
+          %h3 My Likes
+          - @like_bookmarks.each do |bookmark|
+            = link_to "#{bookmark.url}", @bookmark.url
+        - else
+          %h3= link_to "My Likes", bookmarks_path

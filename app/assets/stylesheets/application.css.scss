@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+@import "bootswatch/lumen/variables";
+@import "bootstrap";
+@import "bootswatch/lumen/bootswatch";
+
+
+.user-info {
+  margin-top: 9px;
+}
+
+.nav {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.navbar {
+  height: 57px;
+  nav-default-bg: #75CAEB;
+}
+
+.no-padding {
+  padding: 0px;
+}
+.no-margin {
+  margin: 0px;
+}
+
+.btn-top {
+  margin-top: 10px;
+}
+
+.field-small {
+  width: 40%;
+}
+
+.center {
+  text-align: center;
+}
+
+#search {
+  padding-top: 5px;
+}
