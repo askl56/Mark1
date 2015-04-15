@@ -1,4 +1,4 @@
 .container
   %h1 Bookmarks
-  = render partial: 'likes/like', locals: { bookmark: @bookmark, user_id: current_user.id }
+  = render partial: 'likes/like', locals: { bookmark: @bookmark }
   = link_to "#{@bookmark.url}", @bookmark.url

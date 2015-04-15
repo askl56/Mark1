@@ -5,7 +5,11 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :bookmarks, through: :likes, source: :bookmark
+  has_many :liked_bookmarks, through: :likes, source: :bookmark
+
+  def pending_invite?
+    invitation_created_at && !invitation_accepted_at
+  end
 
   def set_default_role
     self.role ||= :user

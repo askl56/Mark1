@@ -13,6 +13,7 @@ gem 'pry-nav'
 gem 'pry-stack_explorer'
 gem 'will_paginate'
 gem 'bootswatch-rails'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'byebug'

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/about'
   get 'welcome/FAQ'
+  get 'welcome/search'
   resources :users, only: [:show]
   post :incoming, to: 'incoming#create'
   root to: 'welcome#index'

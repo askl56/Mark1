@@ -1,11 +1,9 @@
 - if policy(Like.new).create?
-  %span.label.label-primary Liked
-  = link_to bookmark_like_path(bookmark, bookmark.likes), class: 'btn btn-inverse btn-xs', method: :delete do
-    %span.has-tooltip{"data-toggle" => "tooltip", :title => "Unlike Bookmark"}
-      %i.glyphicon.glyphicon-thumbs-down
-- else
-  = link_to bookmark_likes_path(bookmark), class: 'btn btn-inverse btn-xs', method: :post do
-    %span.has-tooltip{"data-toggle" => "tooltip", :title => "Like Bookmark"}
-      %i.glyphicon.glyphicon-thumbs-up
-= succeed "\\>" do
-  %br/
+  - if like = current_user.liked(bookmark)
+    %span.label.label-primary Liked
+    = link_to bookmark_like_path(bookmark, like), class: 'btn btn-inverse btn-xs', method: :delete do
+      %span.has-tooltip{"data-toggle" => "tooltip", :title => "Unlike Bookmark"}
+        %i.glyphicon.glyphicon-thumbs-down   - else
+    = link_to bookmark_likes_path(bookmark), class: 'btn btn-inverse btn-xs', method: :post do
+      %span.has-tooltip{"data-toggle" => "tooltip", :title => "Like Bookmark"}
+        %i.glyphicon.glyphicon-thumbs-up <br \>

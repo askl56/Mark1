@@ -8,10 +8,10 @@ class LikesController < ApplicationController
 
     if @like.save
       flash[:notice] = "Bookmark liked."
-      redirect_to bookmarks_path
+      redirect_to request.referer
     else
       flash[:error] = "Please try again later."
-      redirect_to bookmarks_path
+      redirect_to request.referer
     end
   end
 
@@ -19,12 +19,13 @@ class LikesController < ApplicationController
     @bookmark = Bookmark.find(params[:bookmark_id])
     @like = Like.find(params[:id])
     authorize @like
+
     if @like.destroy
       flash[:notice] = "Like deleted."
-      redirect_to topic_bookmark_path
+      redirect_to request.referer
     else
       flash[:error] = "Please try again later."
-      redirect_to topic_bookmark_path
+      redirect_to :back
     end
   end
 

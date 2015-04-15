@@ -1,7 +1,18 @@
 .container
   .row
-    %h1 My Bookmarks
-    - current_user.bookmarks.each do |bookmark|
-      %h3= link_to "#{bookmark.url}", bookmark.url
-    = link_to "View Topics", topics_path, class: 'btn btn-info btn-bottom'
-    = link_to "All Bookmarks", bookmarks_path, class: 'btn btn-info btn-bottom'
+    .col-md-6
+      %h1 My Bookmarks
+      - current_user.bookmarks.each do |bookmark|
+        %h4
+          = link_to "#{bookmark.url}", bookmark.url
+          = render partial: 'likes/like', locals: { bookmark: bookmark }
+      - unless current_user.bookmarks.present?
+        %h3 You do not have any bookmarks. Browse topics to add a bookmark
+      = link_to "View Topics", topics_path, class: 'btn btn-info btn-bottom'
+      = link_to "All Bookmarks", bookmarks_path, class: 'btn btn-info btn-bottom'
+    .col-md-6
+      %h1 Liked Bookmarks
+      - current_user.liked_bookmarks.each do |bookmark|
+        %h4
+          = link_to "#{bookmark.url}", bookmark.url
+          = render partial: 'likes/like', locals: { bookmark: bookmark }

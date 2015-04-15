@@ -1,10 +1,20 @@
 .container
   .row
     %h1 All Topics
+    %small You may edit or delete topics you have created
     - @topics.each do |topic|
+      %h3
+        - if policy(topic).destroy?
+          = link_to topic, data: { confirm: 'Are you sure you want to delete this topic?' }, method: :delete, class: 'btn btn-danger btn-xs' do
+            %span.has-tooltip{"data-toggle" => "tooltip", :title => "Delete Topic"}
+              %span.glyphicon.glyphicon-trash
+          = link_to edit_topic_path(topic), class: 'btn btn-success btn-xs' do
+            %span.has-tooltip{"data-toggle" => "tooltip", :title => "Edit Topic"}
+              %span.glyphicon.glyphicon-pencil
+          = link_to "#{topic.title}", topic
+    - else
       %h3= link_to "#{topic.title}", topic
-    = succeed "\\>" do
-      %br/
     - if current_user
-      = link_to My Topics, topics_my_topics_path, class: 'btn btn-info btn-bottom'
-      = link_to New Topic, new_topic_path, class: 'btn btn-success btn-bottom'
+      = link_to "My Topics", topics_my_topics_path, class: 'btn btn-info'
+      = link_to "New Topic", new_topic_path, class: 'btn btn-success'
+    %br/

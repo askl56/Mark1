@@ -22,5 +22,7 @@
       = link_to "All Bookmarks", bookmarks_path, class: 'btn btn-info btn-top btn-bottom'
     .col-md-4
       %h2 Liked Bookmarks
-      %h5
-          %br/
+      - current_user.liked_bookmarks.each do |bookmark|
+        %h5
+          = link_to "#{bookmark.url}", bookmark.url
+          = render partial: 'likes/like', locals: { bookmark: bookmark }

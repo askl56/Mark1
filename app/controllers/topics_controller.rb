@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     authorize @topic
-    @bookmarks = @topic.bookmarks.includes(:user).includes(:likes).paginate(page: params[:page], per_page: 10)
+    @bookmarks = @topic.bookmarks.includes(:user).includes(:likes)
   end
 
   def new

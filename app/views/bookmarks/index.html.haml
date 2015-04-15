@@ -2,6 +2,8 @@
   .row
     %h1 All Bookmarks
     - @bookmarks.each do |bookmark|
-      %h3= link_to "#{bookmark.url}", bookmark.url
+      %h4
+        = link_to "#{bookmark.url}", bookmark.url
+        = render partial: 'likes/like', locals: { bookmark: bookmark }
     = link_to "My Bookmarks", bookmarks_my_bookmarks_path, class: 'btn btn-info btn-bottom'
     = link_to "View Topics", topics_path, class: 'btn btn-info btn-bottom'
