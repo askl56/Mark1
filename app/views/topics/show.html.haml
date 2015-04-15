@@ -1,11 +1,15 @@
 .container
   .row
-    = link_to "New Topic", new_topic_path, class: 'btn btn-warning'
     - if @topic
-      %h4
-        Topic: #{@topic.title}
-      = link_to edit_topic_path(@topic), class: 'btn btn-success' do
-        %span.glyphicon.glyphicon-pencil
-      = link_to @topic, data: { confirm: 'Are you sure you want to delete this topic?' }, method: :delete, class: 'btn btn-danger' do
-        %span.glyphicon.glyphicon-trash
-      = render partial: 'bookmarks/bookmark', locals: { topic_id: @topic.id, user_id: current_user.id }
+      %h3
+        Topic: #{@topic.title}#{link_to edit_topic_path(@topic), class: 'btn btn-success btn-xs' do}
+          %span.has-tooltip{"data-toggle" => "tooltip", :title => "Edit Topic"}
+            %span.glyphicon.glyphicon-pencil
+        = link_to @topic, data: { confirm: 'Are you sure you want to delete this topic?' }, method: :delete, class: 'btn btn-danger btn-xs' do
+          %span.has-tooltip{"data-toggle" => "tooltip", :title => "Delete Topic"}
+            %span.glyphicon.glyphicon-trash
+      %h4= "Bookmarks:" if @bookmarks.present?
+      = render partial: 'bookmarks/bookmark', collection: @bookmarks, locals: { topic_id: @topic.id, user_id: current_user.id }
+      = render partial: 'bookmarks/form', locals: { user_id: current_user.id, topic_id: @topic.id }
+    - else
+      = link_to "New Topic", new_topic_path, class: 'btn btn-warning btn-top'

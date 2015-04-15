@@ -1,13 +1,25 @@
 .container
   .row
     %h1= "#{current_user.name}"
-    .col-md-6
-      %h3 My Topics
+    .col-md-4
+      %h2 My Topics
       - current_user.topics.each do |topic|
-        = link_to "#{topic.title}", topic
-        %br/
-        - topic.bookmarks.each do |bookmark|
-          = link to "#{bookmark.url}", bookmark.url
+        %h3
+          = link_to "#{topic.title}", topic
           %br/
-    .col-md-6
-      %h3 Topics and Bookmarks I Like
+        - topic.bookmarks.each do |bookmark|
+          %h5
+            = link_to "#{bookmark.url}", bookmark.url
+            %br/
+    .col-md-4
+      %h2 Bookmarks I Created
+      - current_user.bookmarks.each do |bookmark|
+        %h5
+          = "#{bookmark.url}"
+          %br/
+    .col-md-4
+      %h2 Bookmarks I Liked
+      - @like_bookmarks.each do |bookmark|
+        %h5
+          = "#{bookmark}"
+          %br/

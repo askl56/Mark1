@@ -18,6 +18,10 @@ class IncomingController < ApplicationController
     @bookmark = Bookmark.create(url: @url, topic_id: @topic_id)
     # Assuming all went well.s
     authorize @bookmark
+
+    if @user.nil?
+      User.invite!(email: params[:sender], name: params[:sender])
+    end
     head 200
   end
 end

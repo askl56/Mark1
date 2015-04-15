@@ -5,6 +5,6 @@ class Bookmark < ActiveRecord::Base
   has_many :users, through: :likes
 
   def liked(bookmark)
-    likes.where(bookmark_id: bookmark.id).first
+    @bookmarks = Like.pluck(:bookmark_id)
   end
 end

@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   def index
   	@topics = Topic.all
   	@user = current_user
-  	@bookmark = Bookmark.where(params[user_id: current_user.id]).first || Bookmark.where(params[:topic_id]).first  	
+  	@bookmarks = current_user.bookmarks 	
   end
 
   def show

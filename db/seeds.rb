@@ -37,8 +37,8 @@ topics = Topic.all
 
 50.times do 
   bookmark = Bookmark.create!(
-    user:     users.sample,
-    topic:    topics.sample,
+    user:     users.first,
+    topic:    topics.first,
     url:      Faker::Internet.url
     )
 end
