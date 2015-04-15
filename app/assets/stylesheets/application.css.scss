@@ -19,6 +19,7 @@
 @import "bootstrap";
 @import "bootswatch/lumen/bootswatch";
 
+body { padding-top: 65px; }
 
 .user-info {
   margin-top: 9px;
@@ -42,6 +43,10 @@
 
 .btn-top {
   margin-top: 10px;
+}
+
+.btn-bottom {
+  margin-bottom: 10px;
 }
 
 .field-small {

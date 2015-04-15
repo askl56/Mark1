@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+  get 'bookmarks/my_bookmarks'
+  get 'topics/my_topics'
+  
   resources :topics do
     resources :bookmarks, except: [:index]
   end

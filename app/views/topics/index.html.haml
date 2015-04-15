@@ -1,10 +1,10 @@
 .container
   .row
-    %h1 Topics
+    %h1 All Topics
     - @topics.each do |topic|
-      = link_to "#{topic.title}", topic
-      %br/
+      %h3= link_to "#{topic.title}", topic
     = succeed "\\>" do
       %br/
     - if current_user
-      = link_to "New Topic", new_topic_path, class: 'btn btn-success'
+      = link_to My Topics, topics_my_topics_path, class: 'btn btn-info btn-bottom'
+      = link_to New Topic, new_topic_path, class: 'btn btn-success btn-bottom'

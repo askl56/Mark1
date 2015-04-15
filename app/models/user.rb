@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
     likes.where(bookmark_id: bookmark.id, user_id: id).first
   end
 
+  scope :visible_to, -> (user) { user ? all : where(public: true) }
+
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 end

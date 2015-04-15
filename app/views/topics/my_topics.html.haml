@@ -1,0 +1,14 @@
+.container
+  .row
+    %h1 My Topics
+    - current_user.topics.each do |topic|
+      %h3
+        = link_to edit_topic_path(topic), class: 'btn btn-success btn-xs' do
+          %span.has-tooltip{"data-toggle" => "tooltip", :title => "Edit Topic"}
+            %span.glyphicon.glyphicon-pencil
+        = link_to topic, data: { confirm: 'Are you sure you want to delete this topic?' }, method: :delete, class: 'btn btn-danger btn-xs' do
+          %span.has-tooltip{"data-toggle" => "tooltip", :title => "Delete Topic"}
+            %span.glyphicon.glyphicon-trash
+        = link_to " #{topic.title}", topic
+    = link_to "All Topics", topics_path, class: 'btn btn-info btn-top btn-bottom'
+    = link_to "New Topic", new_topic_path, class: 'btn btn-success btn-top btn-bottom'

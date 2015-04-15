@@ -11,15 +11,16 @@
           %h5
             = link_to "#{bookmark.url}", bookmark.url
             %br/
+      = link_to "All Topics", topics_path, class: 'btn btn-info btn-top btn-bottom'
     .col-md-4
-      %h2 Bookmarks I Created
+      %h2 My Bookmarks
       - current_user.bookmarks.each do |bookmark|
-        %h5
-          = "#{bookmark.url}"
+        %h4
+          = link_to "#{bookmark.url}", bookmark.url
+          %small= link_to " (#{bookmark.topic.title})", bookmark.topic
           %br/
+      = link_to "All Bookmarks", bookmarks_path, class: 'btn btn-info btn-top btn-bottom'
     .col-md-4
-      %h2 Bookmarks I Liked
-      - @like_bookmarks.each do |bookmark|
-        %h5
-          = "#{bookmark}"
+      %h2 Liked Bookmarks
+      %h5
           %br/
