@@ -7,6 +7,7 @@ RSpec.describe IncomingController, :type => :controller do
     # 1. SETUP
     user = create(:user)
     topic = create(:topic)
+    bookmark = create(:bookmark)
     # 2. ACTION
     post :create, {sender: user.email, subject: "#"+topic.title, "body-plain": "http://bloc.io"}
     # 3. EXPECT

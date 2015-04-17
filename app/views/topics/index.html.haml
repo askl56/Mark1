@@ -12,8 +12,8 @@
             %span.has-tooltip{"data-toggle" => "tooltip", :title => "Edit Topic"}
               %span.glyphicon.glyphicon-pencil
           = link_to "#{topic.title}", topic
-    - else
-      %h3= link_to "#{topic.title}", topic
+        - else
+          %h3= link_to "#{topic.title}", topic
     - if current_user
       = link_to "My Topics", topics_my_topics_path, class: 'btn btn-info'
       = link_to "New Topic", new_topic_path, class: 'btn btn-success'

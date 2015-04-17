@@ -1,20 +1,13 @@
 class BookmarksController < ApplicationController
+  
   def index
   	@topics = Topic.all
   	@user = current_user
   	@bookmarks = current_user.bookmarks 	
   end
 
-  def show
-  	@topic = Topic.where(params[:topic_id])
-  	@bookmark = Bookmark.find(params[:id])
-  end
-
-  def new
-  end
-
   def create
-  	@topic = Topic.find(params[:topic_id])
+  	@topic = Topic.friendly.find(params[:topic_id])
   	@bookmark = @topic.bookmarks.build(bookmark_params)
   	@bookmark.user = current_user
 
@@ -24,9 +17,6 @@ class BookmarksController < ApplicationController
   		flash[:error] = "Bookmark did not save. Please try again."
   	end
   	redirect_to @topic
-  end
-
-  def edit
   end
 
   private

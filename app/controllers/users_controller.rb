@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   after_action :verify_authorized
 
   def index
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    authorize @user
     @user_bookmarks = @user.bookmarks
     @like_bookmarks = Like.where(user_id: current_user.id)
   end

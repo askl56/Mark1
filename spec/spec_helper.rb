@@ -16,6 +16,28 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
+  begin
+    raise "foo"
+  rescue => e
+    puts <<-MSG
+    ===================================================
+      It looks like spec_helper.rb has been loaded
+    multiple times. Normalize the require to:
+
+      require "spec/spec_helper"
+
+    Things like File.join and File.expand_path will
+    cause it to be loaded multiple times.
+
+      Loaded this time from:
+
+      #{e.backtrace.join("\n    ")}
+      ===================================================
+      MSG
+  end
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -40,8 +62,8 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-# The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+  # The settings below are suggested to provide a good initial experience
+  # with RSpec, but feel free to customize to your heart's content.
 =begin
   # These two settings work together to allow you to limit a spec run
   # to individual examples or groups you care about by tagging them with

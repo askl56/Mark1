@@ -10,7 +10,8 @@
             %span.glyphicon.glyphicon-pencil
         Topic: #{@topic.title}
       %h4= "Bookmarks:" if @bookmarks.present?
-      = render partial: 'bookmarks/bookmark', collection: @bookmarks, locals: { topic_id: @topic.id }
+      %ul 
+        = render partial: 'bookmarks/bookmark', collection: @bookmarks, locals: { topic_id: @topic.id }
       = render partial: 'bookmarks/form', locals: { topic_id: @topic.id }
     - else
       = link_to "New Topic", new_topic_path, class: 'btn btn-warning'

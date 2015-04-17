@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'users/show'
   get 'bookmarks/my_bookmarks'
   get 'topics/my_topics'
   
   resources :topics do
-    resources :bookmarks, except: [:index]
+    resources :bookmarks, except: [:index, :show, :edit, :update]
   end
 
   resources :bookmarks, only: [:index] do
@@ -16,7 +15,6 @@ Rails.application.routes.draw do
   get 'welcome/about'
   get 'welcome/FAQ'
   get 'welcome/search'
-  resources :users, only: [:show]
   post :incoming, to: 'incoming#create'
   root to: 'welcome#index'
   devise_for :users
