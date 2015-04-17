@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'controller_macros'
 
 describe TopicsController do
   render_views
@@ -44,8 +45,6 @@ describe TopicsController do
       topic = build(:topic)
     end
 
-    
-
     context "with valid attributes" do
       it 'saves the topic in the database' do
         expect{
@@ -71,5 +70,24 @@ describe TopicsController do
         expect(response).to render_template :new
       end
     end
+  end
+
+  describe 'PATCH #update' do
+  	before :each do
+  		@topic = create(:topic)
+  	end
+
+  	context 'valid attributes' do
+  		it 'locates the requested @topic' do
+  			patch :update, id: @topic, topic: attributes_for(:topic)
+  			expect(assigns(:topic)).to eq(@topic)
+  		end
+
+  		it 'changes @topic attributes' do
+  			patch :update, id: @topic, topic: attributes_for(:topic, title: "andrewscott")
+  			@topic.reload
+  			expect(@topic.title).to eq("andrewscott")
+  		end
+  	end
   end
 end
