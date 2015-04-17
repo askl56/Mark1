@@ -64,6 +64,12 @@ RSpec.configure do |config|
 
   # The settings below are suggested to provide a good initial experience
   # with RSpec, but feel free to customize to your heart's content.
+
+  require 'devise'
+
+  RSpec.configure do |config|
+    config.include Devise::TestHelpers, :type => :controller
+  end
 =begin
   # These two settings work together to allow you to limit a spec run
   # to individual examples or groups you care about by tagging them with
@@ -71,6 +77,8 @@ RSpec.configure do |config|
   # get run.
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
+
+
 
   # Limits the available syntax to the non-monkey patched syntax that is
   # recommended. For more details, see:

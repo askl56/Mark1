@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe IncomingController, :type => :controller do
+describe IncomingController, :type => :controller do
+  login_user
 
 
   it "processes a valid email to create a bookmark" do
@@ -13,8 +14,8 @@ RSpec.describe IncomingController, :type => :controller do
     # 3. EXPECT
     bookmark = user.bookmarks.last
     # expect a bookmark was created with right url
-    expect(bookmark.url).to_eq("http://bloc.io")
+    expect(:bookmark.url).to_eq("http://bloc.io")
     # expect the bookmark is linked to the topic
-    expect(bookmark.topic).to_eq(topic)
+    expect(:bookmark.topic).to_eq(topic)
   end
 end

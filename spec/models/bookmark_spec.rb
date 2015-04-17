@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Bookmark, type: :model do
+
   it "has a valid factory" do
     FactoryGirl.create(:bookmark).should be_valid
   end
@@ -13,9 +14,9 @@ describe Bookmark, type: :model do
   end
 
   it 'is a URL' do
-  	bookmark = Bookmark.new(
-  		url: 'helloworld'
-  		)
-  	expect(bookmark).to raise_error
+    bookmark = Bookmark.new(
+      url: 'helloworld'
+    )
+    expect(bookmark.save).to raise_error()
   end
 end

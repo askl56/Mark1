@@ -19,8 +19,8 @@ feature 'User profile page', :devise do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)
     visit user_path(user)
-    expect(page).to have_content 'User'
-    expect(page).to have_content user.email
+    expect(page).to have_content 'Faker::Name'
+    expect(page).to have_content :email
   end
 
   # Scenario: User cannot see another user's profile
