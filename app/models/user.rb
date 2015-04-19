@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
-  
+
   has_many :topics
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
-  def liked(bookmark)
-    likes.where(bookmark_id: bookmark.id, user_id: id).first
+  def like_for(bookmark)
+    likes.find_by(:bookmark_id => bookmark.id)
   end
 
   scope :visible_to, -> (user) { user ? all : where(public: true) }

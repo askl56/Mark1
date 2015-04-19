@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'controller_macros'
+require_relative '../support/controller_macros'
 
 describe TopicsController do
   render_views
@@ -26,14 +26,8 @@ describe TopicsController do
   end
 
   describe 'GET #edit' do
-    it 'assigns the requested topic to @topic' do
-      topic = create(:topic)
-      get :edit, id: topic
-      expect(assigns(:topic)).to eq topic
-    end
-
     it 'renders #edit' do
-      topic = create(:topic)
+      topic = create(:topic, :user => @user)
       get :edit, :format => "html", id: topic.id
       expect(response).to render_template :edit
     end
@@ -74,7 +68,7 @@ describe TopicsController do
 
   describe 'PATCH #update' do
   	before :each do
-  		@topic = create(:topic)
+  		@topic = create(:topic, :user => @user)
   	end
 
   	context 'valid attributes' do

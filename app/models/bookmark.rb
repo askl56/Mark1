@@ -11,8 +11,4 @@ class Bookmark < ActiveRecord::Base
   validates :url, :format => URI::regexp(%w(http https))
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
-
-  def liked(bookmark)
-    @bookmarks = Like.pluck(:bookmark_id)
-  end
 end

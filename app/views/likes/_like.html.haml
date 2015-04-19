@@ -1,5 +1,6 @@
 - if policy(Like.new).create?
-  - if like = current_user.liked(bookmark)
+  - like = current_user.like_for(bookmark)
+  - if like.present?
     %span.label.label-primary Liked
     = link_to bookmark_like_path(bookmark, like), class: 'btn btn-inverse btn-xs', method: :delete do
       %span.has-tooltip{"data-toggle" => "tooltip", :title => "Unlike Bookmark"}
