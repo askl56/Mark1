@@ -27,6 +27,7 @@ gem 'devise_invitable'
 gem 'haml-rails'
 gem 'pundit'
 gem 'simple_form'
+gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 
 group :development do
   gem 'better_errors'

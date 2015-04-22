@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/ndea/regressor.git
+  revision: f93819171c3a3fe721725f2d7f9d09e85955618b
+  branch: master
+  specs:
+    regressor (0.4.2)
+      faker (~> 1.3)
+      rails (~> 4.0)
+      rspec-rails (~> 3.0)
+      shoulda-matchers (~> 2.7.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -230,6 +241,8 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     sexp_processor (4.5.0)
+    shoulda-matchers (2.7.0)
+      activesupport (>= 3.0.0)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -306,6 +319,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails_12factor
   rails_layout
+  regressor!
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
