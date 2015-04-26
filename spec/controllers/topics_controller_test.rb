@@ -53,7 +53,7 @@ describe TopicsController do
     end
 
     context 'with invalid attributes' do
-      it 'does not save the new contact in the database' do
+      it 'does not save the new topic in the database' do
         expect{
           post :create, topic: { title: "" }
         }.to_not change(Topic, :count)
