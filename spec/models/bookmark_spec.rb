@@ -17,6 +17,6 @@ describe Bookmark, type: :model do
     bookmark = Bookmark.new(
       url: 'helloworld'
     )
-    expect(bookmark.save).to raise_error()
+    expect(bookmark.save).to raise_error("Bookmark did not save. Please try again.")
   end
 end

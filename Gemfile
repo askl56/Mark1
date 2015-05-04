@@ -14,6 +14,7 @@ gem 'pry-stack_explorer'
 gem 'will_paginate'
 gem 'bootswatch-rails'
 gem 'friendly_id'
+gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem 'byebug'
@@ -57,4 +58,5 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'email_spec'
 end
