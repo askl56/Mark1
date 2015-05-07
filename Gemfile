@@ -59,4 +59,5 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'email_spec'
+  gem 'rspec-inherit_from_matcher'
 end
