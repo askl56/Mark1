@@ -4,13 +4,12 @@ RSpec.describe Topic, regressor: true do
 
   # === Relations ===
   it { is_expected.to belong_to :user}
-  
+
   it { is_expected.to have_many :slugs}
 	it { is_expected.to have_many :bookmarks}
-	it { is_expected.to have_many :likes}
 
   # === Nested Attributes ===
-  
+
 
   # === Database (Columns) ===
   it { is_expected.to have_db_column :id }
@@ -29,13 +28,13 @@ RSpec.describe Topic, regressor: true do
 	it { is_expected.not_to allow_value(Faker::Lorem.characters(0)).for :title }
 
   # === Validations (Presence) ===
-  
+
 
   # === Validations (Numericality) ===
-  
 
-  
+
+
   # === Enums ===
-  
-  
+
+
 end
