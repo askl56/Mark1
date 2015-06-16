@@ -5,12 +5,12 @@ feature 'Home page' do
   end
 
   scenario 'look to log in' do
-  	visit root_path
-  	expect(page).to have_content 'Sign in'
+    visit root_path
+    expect(page).to have_content 'Sign in'
   end
 
-  scenario 'view jumbotron' do 
-  	visit root_path
-  	expect(page).to have_content 'Already have an account?'
+  scenario 'view jumbotron' do
+    visit root_path
+    expect(page).to have_content 'Already have an account?'
   end
 end

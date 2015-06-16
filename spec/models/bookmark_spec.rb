@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe Bookmark, type: :model do
-
-  it "has a valid factory" do
+  it 'has a valid factory' do
     expect(FactoryGirl.create(:bookmark)).to be_valid
   end
 

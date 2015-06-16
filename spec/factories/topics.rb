@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :topic do
-    title "#HelloWorld"
+    title '#HelloWorld'
     association :user
   end
 end

@@ -6,9 +6,9 @@ class UsersController < ApplicationController
     @users = User.all
     authorize User
   end
-  
-  #POST /users
-  #POST /users.json
+
+  # POST /users
+  # POST /users.json
 
   def create
     @user = User.new(params[:user])
@@ -18,12 +18,16 @@ class UsersController < ApplicationController
         UserMailer.welcome_email(@user).deliver_now
 
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
-        format.json { render json: @user, status: :created,
-                      location: @user }
+        format.json do
+          render json: @user, status: :created,
+                 location: @user
+        end
       else
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status:
-                      :unprocessable_entity }
+        format.json do
+          render json: @user.errors, status:
+                      :unprocessable_entity
+        end
       end
     end
   end
@@ -35,14 +39,13 @@ class UsersController < ApplicationController
     @like_bookmarks = Like.where(user_id: current_user.id)
   end
 
-
   def update
     @user = User.find(params[:id])
     authorize @user
     if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
+      redirect_to users_path, notice: 'User updated.'
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      redirect_to users_path, alert: 'Unable to update user.'
     end
   end
 
@@ -50,7 +53,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     authorize user
     user.destroy
-    redirect_to users_path, :notice => "User deleted."
+    redirect_to users_path, notice: 'User deleted.'
   end
 
   private
@@ -58,5 +61,4 @@ class UsersController < ApplicationController
   def secure_params
     params.require(:user).permit(:role)
   end
-
 end

@@ -26,10 +26,10 @@ class TopicsController < ApplicationController
     authorize @topic
     @topic.user = current_user
     if @topic.save
-      flash[:notice] = "Topic was saved successfully."
+      flash[:notice] = 'Topic was saved successfully.'
       redirect_to topics_path
     else
-      flash[:error] = "Error saving topic, please try again."
+      flash[:error] = 'Error saving topic, please try again.'
       render :new
     end
   end
@@ -38,10 +38,10 @@ class TopicsController < ApplicationController
     @topic = Topic.friendly.find(params[:id])
     authorize @topic
     if @topic.update_attributes(topic_params)
-      flash[:notice] = "Topic was updated successfully."
+      flash[:notice] = 'Topic was updated successfully.'
       redirect_to topics_path
     else
-      flash[:error] = "Topic was not updated. Please try again."
+      flash[:error] = 'Topic was not updated. Please try again.'
       redirect_to topics_path
     end
   end
@@ -54,7 +54,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "\"#{title}\" was deleted successfully"
       redirect_to topics_path
     else
-      flash[:error] = "There was an error deleting the topic. Please try again"
+      flash[:error] = 'There was an error deleting the topic. Please try again'
       render :show
     end
   end

@@ -27,8 +27,8 @@ describe TopicsController do
 
   describe 'GET #edit' do
     it 'renders #edit' do
-      topic = create(:topic, :user => @user)
-      get :edit, :format => "html", id: topic.id
+      topic = create(:topic, user: @user)
+      get :edit, format: 'html', id: topic.id
       expect(response).to render_template :edit
     end
   end
@@ -39,11 +39,11 @@ describe TopicsController do
       topic = build(:topic)
     end
 
-    context "with valid attributes" do
+    context 'with valid attributes' do
       it 'saves the topic in the database' do
-        expect{
+        expect do
           post :create, topic: attributes_for(:topic)
-        }.to change(Topic, :count).by(1)
+        end.to change(Topic, :count).by(1)
       end
 
       it 'redirects to topics#index' do
@@ -54,34 +54,34 @@ describe TopicsController do
 
     context 'with invalid attributes' do
       it 'does not save the new topic in the database' do
-        expect{
-          post :create, topic: { title: "" }
-        }.to_not change(Topic, :count)
+        expect do
+          post :create, topic: { title: '' }
+        end.to_not change(Topic, :count)
       end
 
       it 're-renders the :new template' do
-        post :create, topic: { title: "" }
+        post :create, topic: { title: '' }
         expect(response).to render_template :new
       end
     end
   end
 
   describe 'PATCH #update' do
-  	before :each do
-  		@topic = create(:topic, :user => @user)
-  	end
+    before :each do
+      @topic = create(:topic, user: @user)
+    end
 
-  	context 'valid attributes' do
-  		it 'locates the requested @topic' do
-  			patch :update, id: @topic, topic: attributes_for(:topic)
-  			expect(assigns(:topic)).to eq(@topic)
-  		end
+    context 'valid attributes' do
+      it 'locates the requested @topic' do
+        patch :update, id: @topic, topic: attributes_for(:topic)
+        expect(assigns(:topic)).to eq(@topic)
+      end
 
-  		it 'changes @topic attributes' do
-  			patch :update, id: @topic, topic: attributes_for(:topic, title: "andrewscott")
-  			@topic.reload
-  			expect(@topic.title).to eq("andrewscott")
-  		end
-  	end
+      it 'changes @topic attributes' do
+        patch :update, id: @topic, topic: attributes_for(:topic, title: 'andrewscott')
+        @topic.reload
+        expect(@topic.title).to eq('andrewscott')
+      end
+    end
   end
 end

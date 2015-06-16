@@ -3,12 +3,12 @@ class Bookmark < ActiveRecord::Base
   friendly_id :url, use: [:slugged, :history]
 
   def should_generate_new_friendly_id?
-  	new_record?
+    new_record?
   end
 
   belongs_to :topic
   belongs_to :user
-  validates :url, :format => URI::regexp(%w(http https))
+  validates :url, format: URI.regexp(%w(http https))
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
 end

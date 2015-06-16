@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 describe Topic, type: :model do
-
-  it "has a valid factory" do
+  it 'has a valid factory' do
     FactoryGirl.create(:topic).should be_valid
   end
-
 
   it '#save' do
     topic = Topic.new(

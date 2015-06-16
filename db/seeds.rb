@@ -20,27 +20,27 @@ member.save!
   user = User.new(
     name:     Faker::Name.name,
     email:    Faker::Internet.email,
-    password:  Faker::Lorem.characters(10),
-    )
+    password:  Faker::Lorem.characters(10)
+  )
   user.skip_confirmation!
   user.save!
 end
 users = User.all
 
-15.times do 
+15.times do
   Topic.create!(
     title:      Faker::Lorem.sentence,
     user:       users.sample
-    )
+  )
 end
 topics = Topic.all
 
-50.times do 
+50.times do
   bookmark = Bookmark.create!(
     user:     users.first,
     topic:    topics.first,
     url:      Faker::Internet.url
-    )
+  )
 end
 bookmarks = Bookmark.all
 
@@ -48,6 +48,6 @@ bookmarks = Bookmark.all
   like = Like.create!(
     user:     users.sample,
     bookmark:   bookmarks.sample
-    )
+  )
 end
 likes = Like.all

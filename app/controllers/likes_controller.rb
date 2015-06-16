@@ -7,10 +7,10 @@ class LikesController < ApplicationController
     authorize @like
 
     if @like.save
-      flash[:notice] = "Bookmark liked."
+      flash[:notice] = 'Bookmark liked.'
       redirect_to request.referer
     else
-      flash[:error] = "Please try again later."
+      flash[:error] = 'Please try again later.'
       redirect_to request.referer
     end
   end
@@ -21,10 +21,10 @@ class LikesController < ApplicationController
     authorize @like
 
     if @like.destroy
-      flash[:notice] = "Like deleted."
+      flash[:notice] = 'Like deleted.'
       redirect_to request.referer
     else
-      flash[:error] = "Please try again later."
+      flash[:error] = 'Please try again later.'
       redirect_to :back
     end
   end
