@@ -15,6 +15,7 @@ gem 'will_paginate'
 gem 'bootswatch-rails'
 gem 'friendly_id'
 gem 'simplecov', :require => false, :group => :test
+gem 'rubocop'
 
 group :development, :test do
   gem 'byebug'
