@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: bookmarks
+#
+#  id         :integer          not null, primary key
+#  url        :string
+#  topic_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer
+#  slug       :string
+#
+
 class Bookmark < ActiveRecord::Base
   extend FriendlyId
   friendly_id :url, use: [:slugged, :history]

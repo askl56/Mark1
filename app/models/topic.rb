@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: topics
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  slug       :string
+#
+
 class Topic < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :history
