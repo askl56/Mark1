@@ -16,6 +16,7 @@ gem 'bootswatch-rails'
 gem 'friendly_id'
 gem 'simplecov', require: false, group: :test
 gem 'rubocop'
+gem 'annotate', github: 'ctran/annotate_models'
 
 group :development, :test do
   gem 'byebug'

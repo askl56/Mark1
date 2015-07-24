@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: d878a5b784ee0f703e9ee677bc0231dc24159512
+  specs:
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
+
+GIT
   remote: https://github.com/ndea/regressor.git
   revision: 6439486e01aed530d23cba20c182f522eb5b8545
   branch: master
@@ -317,6 +325,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   better_errors
   bootstrap-sass
   bootswatch-rails
