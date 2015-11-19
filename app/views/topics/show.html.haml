@@ -10,7 +10,7 @@
             %span.glyphicon.glyphicon-pencil
         Topic: #{@topic.title}
       %h4= "Bookmarks:" if @bookmarks.present?
-      %ul 
+      %ul
         = render partial: 'bookmarks/bookmark', collection: @bookmarks, locals: { topic_id: @topic.id }
       = render partial: 'bookmarks/form', locals: { topic_id: @topic.id }
     - else
